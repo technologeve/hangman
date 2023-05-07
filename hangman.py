@@ -1,8 +1,9 @@
 """ Hangman game. """
 
 # Standard library imports
-import random
 import re
+import requests
+
 
 difficulty_levels = {"easy": 15, "medium": 10, "hard": 5}
 
@@ -52,11 +53,13 @@ def guess_word(guess, word, number_of_lives, correct_guesses):
 def hangman():
     """Main function to run the hangman game. """
 
-    word = random.choice(["hello", "one", "eleven", "four"]) # Select a random word from the list
+    # Select a random word using the Random Word API
+    # Used under the DWTFYW license
+    word = requests.get("https://random-word-api.herokuapp.com/word").json()[0]
 
-    correct_guesses = "*" * len(word)       # Variable displays blank, unguessed letters, and those correctly guessed
-    difficulty = select_parameters()        # Difficulty level chosen
-    number_of_lives = difficulty_levels[difficulty]   # The number of lives the user receives when they start the game
+    correct_guesses = "*" * len(word)                  # Variable displays blank, unguessed letters, and those correctly guessed
+    difficulty = select_parameters()                   # Difficulty level chosen
+    number_of_lives = difficulty_levels[difficulty]    # The number of lives the user receives when they start the game
 
     while correct_guesses != word:
 
