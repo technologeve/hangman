@@ -1,4 +1,4 @@
-""" Hangman game. """
+""" Command line hangman game. """
 
 # Standard library imports
 import re
@@ -88,4 +88,8 @@ def hangman():
     print(f"Well done! The word was {word}, which you guessed with {number_of_lives} lives left\n\n")
     return 0
 
-hangman()
+def main():
+    hangman()
+
+if __name__ == "__main__":
+    main()
