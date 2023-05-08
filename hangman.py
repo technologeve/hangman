@@ -78,11 +78,13 @@ def hangman():
         # Check if the guess is correct
         if len(guess) == 1:
             # If the user guesses a letter
-            number_of_lives, correct_guesses = guess_letter(guess, word, number_of_lives, correct_guesses)
+            number_of_lives, correct_guesses = guess_letter(guess,
+                                                             word, number_of_lives, correct_guesses)
 
         else:
             # If the user guesses a word
-            number_of_lives, correct_guesses = guess_word(guess, word, number_of_lives, correct_guesses)
+            number_of_lives, correct_guesses = guess_word(guess,
+                                                           word, number_of_lives, correct_guesses)
 
     # If the word is correctly guessed
     print(f"Well done! The word was {word}, which you guessed with {number_of_lives} lives left\n\n")
